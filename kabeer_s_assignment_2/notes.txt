@@ -1,3 +1,5 @@
-Level 0 : I googled how to add port and url to ssh. 
+Level 0 : I googled how to add port and url to ssh.
 the command i finally used was ssh -p 2220 bandit0@bandit.labs.overthewire.org
 the password i found is ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
+
+Level 1 : I read the file using its complete url. with command cat. the password is 263JGJPfgU6LtdEvgfWU1XP5yac29mFx
