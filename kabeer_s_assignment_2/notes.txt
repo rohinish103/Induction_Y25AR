@@ -63,3 +63,8 @@ Level 10:
 see man for base64
 use the -d option to decode
 dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
+
+Level 11:
+see man for tr (translate)
+command is tr "a-m n-z A-M N-Z" "n-z a-m N-Z A-M" < data.txt
+7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
