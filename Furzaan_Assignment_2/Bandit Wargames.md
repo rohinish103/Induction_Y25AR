@@ -1,18 +1,22 @@
-Bandit Wargames solutions
+# Bandit Wargames solutions
 
-To start level 0, typed ssh bandit0@bandit.labs.overthewire.org \-p 2220 in the terminal. 
+#      To start level 0, typed ssh bandit0@bandit.labs.overthewire.org \-p 2220 in the terminal. 
 
-LEVEL 0 : Password for level 0 was bandit0 (on instructions page). Used ls to see all the files present. Used “cd readme” to get pass for level 1 from readme.
+#      LEVEL 0 : Password for level 0 was bandit0 (on instructions page). Used ls to see all the files present. Used “cat readme” to get pass for level 1 from readme.
 
 LEVEL 1 : Now used ssh [bandit1@bandit.labs.overthewire.org](mailto:bandit1@bandit.labs.overthewire.org) \-p 2220 to move to level1. ls showed a file “-”. Used cat ./- to see the contents in the file. Got a password for level 2 from there.
 
 LEVEL 2 : ls showed a file “--spaces in the filename–”. Used cat ./\* in order to extract the contents of the file.
 
-LEVEL 3 : Now moving to level 3, the files here were hidden, so I had to use ls \-a which showed something like “ . .. …Hiding-From-You”.  Found the pass for level 4 in the file named “...Hiding-From-You”.  
+LEVEL 3 : Now moving to level 3, the files here were hidden, so I had to use ls \-a which showed something like “ . .. …Hiding-From-You”.  Found the pass for level 4 in the file named “...Hiding-From-You”.
+
 LEVEL 4 : Level 4 also had a directory named “inhere”. “cd inhere”, then ls showed 10 files like “-file00”, ….. , “-file09”. Used a command “file ./\*” which showed which file was a human-readable file.Used cat ./”-file07” to get password for level 5\.   
-LEVEL 5 : For level 5, the inhere directory contained many sub-directories. Used the specifications given about the file and find command to get the required file and eventually found the password.   
+LEVEL 5 : For level 5, the inhere directory contained many sub-directories. Used the specifications given about the file and find command to get the required file and eventually found the password. 
+
 LEVEL 6 : For level 6, used the find command with all the specs given about the pass word and eventually made it to level 7\. 
+
 LEVEL 7 : Level 7 required the grep command. Used grep “millionth” data.txt which gave the line containing the password for level 8\. 
+
 LEVEL 8 : In level 8, to extract the unique line from the file data.txt, used the uniq command but before that required to sort the contents. Exact command : sort data.txt | uniq \-u
 
 LEVEL 9 : used the strings command which gave the strings present in the data.txt file omitting all binary code. Then, used grep “==” to find the password in the file. 
