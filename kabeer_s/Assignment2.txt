@@ -78,7 +78,61 @@ apparently i had to unhexdump first
 then decompress lots of time using gzip, bzip2 and tar
 FO5dwFsc0cbaIiH0h8J2eUks2vdTDwAn
 
-
-
-
+Level 13:
+Private key file found.
+I copy the file using scp -P 2220 bandit13@bandit.labs.overthewire.org:sshkey.private ./
+But this gives permission too open
+So i do chmod 0400 filename
+Then do the ssh with i flag
+cd into directory etc (doesnt show up with ls for some reason)
 MU4VWeTyJk8ROof1qqmcBPaLh7lDCPvS
+
+Level 14:
+SSH into the overthewire thing
+telnet localhost 30000
+submit previous pass
+8xCjnmgoKbGLhHFAZlGE5Tmu4M2tKJQo
+
+Level 15:
+read man pages
+openssl s_client -connect localhost:30001
+kSkvUpMQ7lBYyCM4GBPvCvT1BfWRy0Dx
+
+Level 16:
+Read nc manpage to see portscanning.
+nc -z localhost 31000-32000 gives the 5 ports that are listening.
+Then i just openssl on all 5. Had to use quiet option to remove the keyupdate thing
+I get the the private rsa key on third try
+
+Level 17:
+tried to most obvious command diff
+x2gLTTjFwMOhQ8oWNbMN362QKxfRqGlO
+
+Level 18:
+see man pages for ssh
+commands can be executed by simply appending them to ssh command
+ssh -p 2220 bandit18@bandit.labs.overthewire.org cat readme
+cGWpMaKXVwDUNgPAVJbWYuGHVn9zl3j8
+
+Level 19:
+read the first line in the wiki given :)
+./bandit20-do cat /etc/bandit_pass/bandit20
+0qXahG8ZjOVMN9Ghs7iOWsCfZyXOUbYO
+
+Level 20:
+use two terminal tabs. open an nc port on one tab and run the suconnect from another tab
+apparently nc denies permission on smaller port number but not on larger ones (gpt)
+EeoULMCra2q0dSkYj561DX7s1CpBuOBt
+
+Level 21:
+cd /etc/cron.d
+ls
+cat *22
+- the file runs the same shell file as user bandit22 on both reboot and every minute. 
+- the &> thing redirects output of commands to a useless file
+cat /usr/bin/cronjob_bandit22.sh
+- the shell command changes permissions of a temporary file
+- the temp file can be accessed by bandit21 too
+- bandit22 copies its password from bandit_pass to this temp file
+cat /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+- we get tRae0UfB9v0UzbCdn9cY0gQnds9GF58Q
