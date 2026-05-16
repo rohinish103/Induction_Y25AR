@@ -45,7 +45,7 @@ Rohinish_task3/
 From the repository root:
 
 ```bash
-cmake -S Rohinish_task3 -B Rohinish_task3/build
+CXX=/usr/bin/g++ cmake -S Rohinish_task3 -B Rohinish_task3/build
 cmake --build Rohinish_task3/build
 ```
 
