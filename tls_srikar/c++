@@ -288,3 +288,82 @@ public:
         }
     }
 };
+
+int main() {
+
+    Bank bank;
+    bank.bankName = "Anthropic Bank";
+
+    Branch branch;
+    branch.branchName = "Kanpur Main Branch";
+    branch.IFSCCode = "ANTH0001";
+    branch.address = "MG Road, Kanpur";
+
+    bank.branches.push_back(&branch);
+    cout << "Bank created: " << bank.bankName << endl;
+    cout << "Branch: " << branch.branchName << endl;
+
+    Customer customer;
+    customer.fullName = "Rahul Sharma";
+    customer.mobileNumber = "9876543210";
+    customer.email = "rahul@email.com";
+    customer.dob = "01-01-2000";
+    cout << "Customer: " << customer.fullName << endl;
+
+    Account* savings = AccountFactory::createAccount("savings");
+    Account* current = AccountFactory::createAccount("current");
+    Account* fd      = AccountFactory::createAccount("fd");
+    cout << "Accounts created using Factory" << endl;
+
+    savings->deposit(10000);
+    current->deposit(20000);
+    cout << "Deposits done" << endl;
+
+    savings->withdraw(2000);
+    cout << "Withdrawal successful" << endl;
+
+    try {
+        savings->withdraw(999999);  // way more than balance
+    } catch (InsufficientBalanceException& e) {
+        cout << "Exception caught: " << e.what() << endl;
+    }
+
+    try {
+        savings->status = "blocked";
+        savings->withdraw(100);
+    } catch (AccountBlockedException& e) {
+        cout << "Exception caught: " << e.what() << endl;
+    }
+
+    Loan loan;
+    loan.loanType = "Home";
+    loan.loanAmount = 500000;
+    loan.interestRate = 8.5;
+    loan.tenureYears = 10;
+    loan.calculateEMI();
+    cout << "Loan EMI: " << loan.EMIAmount << endl;
+    
+    ATMCard card;
+    card.cardNumber = 1234567890123456;
+    card.cardType = "Debit";
+    card.cardStatus = "Active";
+    card.PIN = 1234;
+    cout << "ATM Card created: " << card.cardType << endl;
+
+    SMSNotification sms;
+    sms.phoneNumber = "9876543210";
+    sms.message = "Your account has been credited with Rs.10000";
+    sms.send();
+
+    EmailNotification email;
+    email.emailAddress = "rahul@email.com";
+    email.subject = "Transaction Alert";
+    email.message = "Your account has been credited with Rs.10000";
+    email.send();
+
+    delete savings;
+    delete current;
+    delete fd;
+
+    return 0;
+}
